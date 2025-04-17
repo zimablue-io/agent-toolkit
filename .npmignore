@@ -1,0 +1,33 @@
+# Source
+src/
+examples/
+tests/
+
+# Config files
+tsconfig.json
+.prettierrc
+.eslintrc.json
+.gitignore
+
+# Development files
+*.test.ts
+*.spec.ts
+vitest.config.ts
+
+# Logs
+logs/
+*.log
+
+# Environment
+.env*
+
+# Editor
+.vscode/
+.idea/
+
+# Git
+.git/
+.gitignore
+
+# Build process
+pnpm-lock.yaml
