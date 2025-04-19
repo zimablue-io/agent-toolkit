@@ -1,4 +1,9 @@
-import express, { type Request, type Response, type NextFunction, type RequestHandler } from 'express'
+import express, {
+  type Request,
+  type Response,
+  type NextFunction,
+  type RequestHandler,
+} from 'express'
 import { createLogger, format, transports } from 'winston'
 import { type Agent, type MCPServerConfig } from '../types'
 
@@ -11,18 +16,12 @@ export class MCPServer {
     // Setup logger
     this.logger = createLogger({
       level: config.logger?.level || 'info',
-      format: format.combine(
-        format.timestamp(),
-        format.json()
-      ),
+      format: format.combine(format.timestamp(), format.json()),
       transports: [
         new transports.Console({
-          format: format.combine(
-            format.colorize(),
-            format.simple()
-          )
-        })
-      ]
+          format: format.combine(format.colorize(), format.simple()),
+        }),
+      ],
     })
 
     this.setupMiddleware()
@@ -34,7 +33,7 @@ export class MCPServer {
     this.app.use((req: Request, _res: Response, next: NextFunction) => {
       this.logger.info(`${req.method} ${req.path}`, {
         query: req.query,
-        body: req.body
+        body: req.body,
       })
       next()
     })
@@ -43,13 +42,13 @@ export class MCPServer {
   private setupRoutes(): void {
     // List all agents
     this.app.get('/agents', ((_req: Request, res: Response) => {
-      const agentList = [...this.agents.values()].map(agent => ({
+      const agentList = [...this.agents.values()].map((agent) => ({
         name: agent.config.name,
         role: agent.config.role,
-        tools: [...agent.tools.values()].map(tool => ({
+        tools: [...agent.tools.values()].map((tool) => ({
           name: tool.config.name,
-          description: tool.config.description
-        }))
+          description: tool.config.description,
+        })),
       }))
       res.json({ agents: agentList })
     }) as RequestHandler)
@@ -64,15 +63,15 @@ export class MCPServer {
       res.json({
         name: agent.config.name,
         role: agent.config.role,
-        tools: [...agent.tools.values()].map(tool => ({
+        tools: [...agent.tools.values()].map((tool) => ({
           name: tool.config.name,
-          description: tool.config.description
-        }))
+          description: tool.config.description,
+        })),
       })
     }) as RequestHandler)
 
     // Execute agent with prompt
-    this.app.post('/agents/:name/execute', ((async (req: Request, res: Response) => {
+    this.app.post('/agents/:name/execute', (async (req: Request, res: Response) => {
       const { prompt, tools } = req.body
       const agent = this.agents.get(req.params.name)
 
@@ -89,21 +88,21 @@ export class MCPServer {
         res.json({ result })
       } catch (error) {
         this.logger.error('Execution error:', error)
-        res.status(500).json({ 
-          error: error instanceof Error ? error.message : 'Unknown error'
+        res.status(500).json({
+          error: error instanceof Error ? error.message : 'Unknown error',
         })
       }
-    }) as RequestHandler))
+    }) as RequestHandler)
 
     // Error handler
-    this.app.use(((err: Error, _req: Request, res: Response, next: NextFunction) => {
+    this.app.use((err: Error, _req: Request, res: Response, next: NextFunction) => {
       this.logger.error('Server error:', err)
-      res.status(500).json({ 
+      res.status(500).json({
         error: 'Internal server error',
-        message: err.message 
+        message: err.message,
       })
       next(err)
-    }))
+    })
   }
 
   addAgent(agent: Agent): void {
