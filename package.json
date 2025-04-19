@@ -1,6 +1,7 @@
 {
   "name": "@zimablue-io/agent-toolkit",
   "version": "0.1.0",
+  "private": true,
   "description": "A framework for building AI agents with specialized tools and capabilities",
   "type": "module",
   "main": "dist/index.js",

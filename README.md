@@ -14,12 +14,19 @@ A powerful toolkit for building specialized AI agents with custom tool integrati
 
 ## Installation
 
+> ⚠️ **Testing Phase Notice**: This package is currently in testing phase and the API may undergo changes. We welcome collaboration and feedback from early adopters! If you're interested in contributing or have suggestions, please feel free to open an issue or submit a PR.
+
+Since the package is currently in testing, you can install it directly from GitHub:
+
 ```bash
-npm install @zimablue-io/agent-toolkit
-# or
-yarn add @zimablue-io/agent-toolkit
-# or
-pnpm add @zimablue-io/agent-toolkit
+# Using npm
+npm install github:zimablue-io/agent-toolkit
+
+# Using yarn
+yarn add github:zimablue-io/agent-toolkit
+
+# Using pnpm
+pnpm add github:zimablue-io/agent-toolkit
 ```
 
 ## Quick Start
