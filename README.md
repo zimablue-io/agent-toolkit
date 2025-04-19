@@ -2,6 +2,16 @@
 
 A powerful toolkit for building specialized AI agents with custom tool integrations. This framework allows you to create, customize, and deploy AI agents with specific capabilities through a flexible tool-based architecture.
 
+## Features
+
+- 🤖 Create specialized AI agents with different roles and capabilities
+- 🛠 Build custom tools for domain-specific tasks
+- 🔄 Share tools between multiple agents
+- 📝 Maintain conversation history and context
+- 🚀 Easy-to-use HTTP API
+- 📊 Built-in logging and monitoring
+- 🎯 Type-safe API with TypeScript
+
 ## Installation
 
 ```bash
@@ -150,23 +160,13 @@ server.start()
 // }
 ```
 
-This example demonstrates:
+This example demonstrated:
 
 - Creating specialized agents with different roles and responsibilities
 - Implementing inter-agent communication through tools
 - Setting up a review and approval workflow
 - Using agent backstories to define behavior and expertise
 - Maintaining separation of concerns while enabling collaboration
-
-## Features
-
-- 🤖 Create specialized AI agents with different roles and capabilities
-- 🛠 Build custom tools for domain-specific tasks
-- 🔄 Share tools between multiple agents
-- 📝 Maintain conversation history and context
-- 🚀 Easy-to-use HTTP API
-- 📊 Built-in logging and monitoring
-- 🎯 Type-safe API with TypeScript
 
 ## API Reference
 
