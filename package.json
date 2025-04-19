@@ -27,6 +27,7 @@
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",
     "clean": "rimraf dist",
+    "prepare": "pnpm run build",
     "prepublishOnly": "pnpm run clean && pnpm run build"
   },
   "keywords": [
